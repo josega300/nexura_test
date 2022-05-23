@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    //App::setLocale('es');
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::resource('empleados',App\Http\Controllers\EmpleadoController::class)->middleware('auth');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
